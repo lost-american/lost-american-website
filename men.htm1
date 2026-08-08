@@ -3,21 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Men | Lost American</title>
+  <title>MEN | Lost American</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      padding: 25px 20px;
+      border-bottom: 1px solid #333;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .back {
+      display: inline-block;
+      margin: 25px 20px;
+      color: white;
+      text-decoration: none;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 40px;
+    }
+
+    .products {
+      padding: 20px;
+    }
+  </style>
 </head>
 
-<body style="margin:0; background:#0b0b0b; color:white; font-family:Arial,sans-serif;">
+<body>
 
-  <header style="padding:20px; border-bottom:1px solid #333;">
-    <a href="index.html" style="color:white; text-decoration:none;">
-      LOST AMERICAN
-    </a>
+  <header>
+    <div class="logo">LOST AMERICAN</div>
   </header>
 
-  <main style="padding:30px 20px;">
-    <h1>MEN</h1>
-    <p>Men's collection</p>
-  </main>
+  <a class="back" href="index.html">← BACK</a>
+
+  <h1>MEN</h1>
+
+  <section class="products">
+    <h2>NEW DROP</h2>
+  </section>
 
 </body>
 </html>
