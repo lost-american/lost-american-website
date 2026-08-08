@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Men | Lost American</title>
+</head>
+
+<body style="margin:0; background:#0b0b0b; color:white; font-family:Arial,sans-serif;">
+
+  <header style="padding:20px; border-bottom:1px solid #333;">
+    <a href="index.html" style="color:white; text-decoration:none;">
+      LOST AMERICAN
+    </a>
+  </header>
+
+  <main style="padding:30px 20px;">
+    <h1>MEN</h1>
+    <p>Men's collection</p>
+  </main>
+
+</body>
+</html>
