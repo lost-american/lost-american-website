@@ -1,139 +1,248 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lost American</title>
 
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
       background: #0b0b0b;
       color: white;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     header {
-      padding: 20px;
+      height: 85px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #333;
+      justify-content: space-between;
+      padding: 0 22px;
+      border-bottom: 1px solid #292929;
+      position: sticky;
+      top: 0;
+      background: #0b0b0b;
+      z-index: 100;
     }
 
     .logo {
-      font-size: 26px;
-      font-weight: bold;
+      font-size: 21px;
+      font-weight: 900;
       letter-spacing: 2px;
     }
 
+    .menu-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 31px;
+      cursor: pointer;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 82%;
+      height: 100vh;
+      background: #f5f5f2;
+      color: #111;
+      z-index: 999;
+      padding: 35px 28px;
+      transition: 0.35s;
+    }
+
+    .menu.open {
+      right: 0;
+    }
+
+    .close-btn {
+      display: block;
+      margin-left: auto;
+      border: none;
+      background: none;
+      font-size: 35px;
+      cursor: pointer;
+      margin-bottom: 60px;
+    }
+
+    .menu a {
+      display: block;
+      color: #111;
+      text-decoration: none;
+      font-size: 34px;
+      font-weight: 800;
+      margin: 30px 0;
+    }
+
     .hero {
-      min-height: 70vh;
+      min-height: 78vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 30px;
+      padding: 35px 22px;
+      border-bottom: 1px solid #292929;
+    }
+
+    .hero-small {
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: #999;
+      margin-bottom: 18px;
     }
 
     .hero h1 {
-      font-size: 52px;
-      margin-bottom: 10px;
+      font-size: clamp(55px, 16vw, 105px);
+      line-height: 0.85;
+      letter-spacing: -5px;
+      font-weight: 900;
     }
 
     .hero p {
       color: #aaa;
-      font-size: 18px;
-      max-width: 500px;
+      font-size: 17px;
+      line-height: 1.6;
+      max-width: 450px;
+      margin-top: 30px;
     }
 
-    .button {
-      margin-top: 25px;
-      padding: 14px 28px;
+    .shop-btn {
+      display: inline-block;
+      width: fit-content;
+      margin-top: 35px;
       background: white;
       color: black;
+      padding: 17px 28px;
       text-decoration: none;
-      font-weight: bold;
-      border-radius: 4px;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    .section {
+      padding: 75px 22px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      font-size: 37px;
+      letter-spacing: -2px;
+    }
+
+    .section-title span {
+      color: #777;
+      font-size: 12px;
     }
 
     .products {
-      padding: 40px 20px;
-    }
-
-    .products h2 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
 
     .product {
-      background: #151515;
-      padding: 15px;
-      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      display: block;
     }
 
-    .product img {
-      width: 100%;
-      border-radius: 6px;
+    .product-image {
+      background: #181818;
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      font-size: 13px;
+      margin-bottom: 13px;
     }
 
     .product h3 {
-      margin-bottom: 5px;
+      font-size: 14px;
+      margin-bottom: 7px;
     }
 
     .price {
-      color: #aaa;
+      color: #888;
+      font-size: 13px;
+    }
+
+    .banner {
+      min-height: 380px;
+      margin: 20px;
+      padding: 30px;
+      background: #e7e7e2;
+      color: #111;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .banner h2 {
+      font-size: 50px;
+      line-height: 0.9;
+      letter-spacing: -3px;
+    }
+
+    .banner p {
+      margin-top: 18px;
+      max-width: 300px;
+      line-height: 1.5;
     }
 
     footer {
-      text-align: center;
-      color: #666;
-      padding: 40px;
-      border-top: 1px solid #222;
+      padding: 60px 22px 35px;
+      border-top: 1px solid #292929;
     }
-    .menu-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 28px;
-  cursor: pointer;
-}
 
-.side-menu {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 80%;
-  height: 100%;
-  background: white;
-  z-index: 9999;
-  padding: 30px;
-  box-sizing: border-box;
-}
+    footer h2 {
+      font-size: 25px;
+      margin-bottom: 30px;
+    }
 
-.side-menu a {
-  display: block;
-  color: black;
-  text-decoration: none;
-  font-size: 28px;
-  margin: 25px 0;
-}
+    footer p {
+      color: #777;
+      font-size: 12px;
+    }
 
-.side-menu button {
-  display: block;
-  margin-left: auto;
-  background: none;
-  border: none;
-  font-size: 30px;
-}
+    @media (min-width: 800px) {
+      header {
+        padding: 0 60px;
+      }
+
+      .hero {
+        padding: 70px 60px;
+      }
+
+      .section {
+        padding: 100px 60px;
+      }
+
+      .products {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+
+      .menu {
+        width: 420px;
+      }
+    }
   </style>
 </head>
 
@@ -141,45 +250,126 @@
 
 <header>
   <div class="logo">LOST AMERICAN</div>
-<button class="menu-btn" onclick="document.getElementById('menu').style.display='block'">•••</button>
+
+  <button class="menu-btn" onclick="openMenu()">
+    ☰
+  </button>
 </header>
-<div id="menu" class="side-menu">
-  <button onclick="document.getElementById('menu').style.display='none'">✕</button>
+
+<div class="menu" id="menu">
+
+  <button class="close-btn" onclick="closeMenu()">
+    ×
+  </button>
+
+  <a href="index.html">MAIN</a>
   <a href="men.html">MEN</a>
-<a href="women.html">WOMEN</a>
+  <a href="#women">WOMEN</a>
+  <a href="#new">NEW DROP</a>
+
 </div>
+
 <section class="hero">
-  <h1>LOST AMERICAN</h1>
-  <p>Streetwear for people who don't follow the crowd.</p>
-  <a class="button" href="#shop">SHOP NOW</a>
+
+  <div class="hero-small">
+    LOST AMERICAN / 2026
+  </div>
+
+  <h1>
+    LOST<br>
+    AMERICAN
+  </h1>
+
+  <p>
+    Streetwear for people who don't follow the crowd.
+    Built for the streets. Designed to stand out.
+  </p>
+
+  <a href="#new" class="shop-btn">
+    SHOP NEW DROP →
+  </a>
+
 </section>
 
-<section class="products" id="men">
-  <h2>NEW DROP</h2>
+<section class="section" id="new">
 
-  <div class="grid">
+  <div class="section-title">
+    <h2>NEW DROP</h2>
+    <span>01 — 04</span>
+  </div>
 
-    <div class="product">
-      <img src="DB794EBE-E9C4-4927-8172-048D7992A48A.jpeg" alt="Lost American T-Shirt">
-      <h3>Lost American T-Shirt</h3>
+  <div class="products">
+
+    <a class="product" href="#">
+      <div class="product-image">
+        PRODUCT IMAGE
+      </div>
+      <h3>LOST T-SHIRT</h3>
       <div class="price">15 000 AMD</div>
-    </div>
+    </a>
 
-    <div class="product">
-      <img src="https://placehold.co/600x700/111/FFF?text=LOST+AMERICAN" alt="Hoodie">
-      <h3>Lost American Hoodie</h3>
+    <a class="product" href="#">
+      <div class="product-image">
+        PRODUCT IMAGE
+      </div>
+      <h3>AMERICAN HOODIE</h3>
       <div class="price">25 000 AMD</div>
-    </div>
+    </a>
+
+    <a class="product" href="#">
+      <div class="product-image">
+        PRODUCT IMAGE
+      </div>
+      <h3>OVERSIZED TEE</h3>
+      <div class="price">18 000 AMD</div>
+    </a>
+
+    <a class="product" href="#">
+      <div class="product-image">
+        PRODUCT IMAGE
+      </div>
+      <h3>LOST HOODIE</h3>
+      <div class="price">28 000 AMD</div>
+    </a>
 
   </div>
-</section> 
-<section class="products" id="women">
-  <h2>WOMEN</h2>
+
+</section>
+
+<section class="banner" id="women">
+
+  <h2>
+    DON'T<br>
+    FOLLOW.
+  </h2>
+
+  <p>
+    Lost American is more than clothing.
+    It's a direction of your own.
+  </p>
+
 </section>
 
 <footer>
-  © 2026 Lost American
+
+  <h2>LOST AMERICAN®️</h2>
+
+  <p>
+    YEREVAN — ARMENIA<br><br>
+    ©️ 2026 LOST AMERICAN
+  </p>
+
 </footer>
+
+<script>
+  function openMenu() {
+    document.getElementById("menu").classList.add("open");
+  }
+
+  function closeMenu() {
+    document.getElementById("menu").classList.remove("open");
+  }
+</script>
 
 </body>
 </html>
