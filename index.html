@@ -98,6 +98,42 @@
       padding: 40px;
       border-top: 1px solid #222;
     }
+    .menu-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.side-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 100%;
+  background: white;
+  z-index: 9999;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.side-menu a {
+  display: block;
+  color: black;
+  text-decoration: none;
+  font-size: 28px;
+  margin: 25px 0;
+}
+
+.side-menu button {
+  display: block;
+  margin-left: auto;
+  background: none;
+  border: none;
+  font-size: 30px;
+}
   </style>
 </head>
 
@@ -105,9 +141,13 @@
 
 <header>
   <div class="logo">LOST AMERICAN</div>
-<div><a href="#men">MEN</a> &nbsp;&nbsp; <a href="#women">WOMEN</a></div>
+<button class="menu-btn" onclick="document.getElementById('menu').style.display='block'">•••</button>
 </header>
-
+<div id="menu" class="side-menu">
+  <button onclick="document.getElementById('menu').style.display='none'">✕</button>
+  <a href="#men">MEN</a>
+  <a href="#women">WOMEN</a>
+</div>
 <section class="hero">
   <h1>LOST AMERICAN</h1>
   <p>Streetwear for people who don't follow the crowd.</p>
