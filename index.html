@@ -379,6 +379,18 @@
     alert(name + " added to cart!");
   }
   document.getElementById("cart-count").textContent = cart.length;
+  function openCart() {
+  if (cart.length === 0) {
+    alert("Your cart is empty.");
+    return;
+  }
+
+  let items = cart.map((item, index) =>
+    (index + 1) + ". " + item.name + " — " + item.price + " AMD"
+  ).join("\n");
+
+  alert("YOUR CART\n\n" + items);
+}
 </script>
 
 </body>
