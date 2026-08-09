@@ -302,15 +302,24 @@ transition: transform 0.35s ease;
       }
     }
   
-  .cart-btn {
-  background: #000;
+.cart-btn {
+  background: transparent;
   border: none;
-}
-  .cart-btn {
+  color: #fff;
   display: flex;
   align-items: center;
   gap: 4px;
   padding: 8px;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.cart-btn svg {
+  stroke: #fff;
+}
+
+.cart-btn #cart-count {
+  color: #fff;
 }
     </style>
 </head>
