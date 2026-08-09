@@ -1,1 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lost T-Shirt | Lost American</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #0b0b0b;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+      padding: 22px;
+      border-bottom: 1px solid #2a2a2a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .back {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .product-page {
+      padding: 20px;
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      background: #181818;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 34px;
+      margin: 0 0 10px;
+    }
+
+    .price {
+      font-size: 20px;
+      color: #aaa;
+      margin-bottom: 24px;
+    }
+
+    .label {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .sizes {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .sizes button {
+      width: 52px;
+      height: 44px;
+      border: 1px solid #444;
+      background: #111;
+      color: white;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+
+    .sizes button.active {
+      background: white;
+      color: black;
+    }
+
+    .colors {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .color {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 2px solid #555;
+    }
+
+    .black {
+      background: black;
+    }
+
+    .white {
+      background: white;
+    }
+
+    .brown {
+      background: #6b4423;
+    }
+
+    .add-cart {
+      width: 100%;
+      padding: 17px;
+      background: white;
+      color: black;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">LOST AMERICAN</div>
+  <a class="back" href="men.html">← BACK</a>
+</header>
+
+<main class="product-page">
+
+  <div class="product-image">
+    PRODUCT IMAGE
+  </div>
+
+  <h1>LOST T-SHIRT</h1>
+  <div class="price">15 000 AMD</div>
+
+  <div class="label">SELECT SIZE</div>
+
+  <div class="sizes">
+    <button onclick="selectSize(this)">S</button>
+    <button onclick="selectSize(this)">M</button>
+    <button onclick="selectSize(this)">L</button>
+    <button onclick="selectSize(this)">XL</button>
+  </div>
+
+  <div class="label">SELECT COLOR</div>
+
+  <div class="colors">
+    <div class="color black"></div>
+    <div class="color white"></div>
+    <div class="color brown"></div>
+  </div>
+
+  <button class="add-cart">ADD TO CART</button>
+
+</main>
+
+<script>
+  function selectSize(button) {
+    document.querySelectorAll(".sizes button").forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+  }
+</script>
+
+</body>
+</html>
