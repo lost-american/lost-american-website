@@ -1,1 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart | Lost American</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #0b0b0b;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+      padding: 22px;
+      border-bottom: 1px solid #2a2a2a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .back {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .cart-page {
+      padding: 22px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin: 10px 0 25px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 110px 1fr auto;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid #2a2a2a;
+      align-items: center;
+    }
+
+    .cart-image {
+      width: 110px;
+      aspect-ratio: 4 / 5;
+      background: #181818;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-size: 11px;
+    }
+
+    .cart-info h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .meta {
+      color: #999;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .remove {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .quantity button {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid #444;
+      background: #111;
+      color: white;
+      font-size: 18px;
+    }
+
+    .summary {
+      margin-top: 35px;
+      border-top: 1px solid #2a2a2a;
+      padding-top: 25px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .checkout {
+      width: 100%;
+      padding: 18px;
+      background: white;
+      color: black;
+      border: none;
+      border-radius: 12px;
+      font-weight: 900;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .empty {
+      color: #888;
+      font-size: 18px;
+      padding: 40px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">LOST AMERICAN</div>
+  <a class="back" href="index.html">← CONTINUE SHOPPING</a>
+</header>
+
+<main class="cart-page">
+  <h1>YOUR CART</h1>
+
+  <div id="cart-items"></div>
+
+  <div class="summary">
+    <div class="summary-row">
+      <span>TOTAL</span>
+      <span id="cart-total">0 AMD</span>
+    </div>
+
+    <button class="checkout" onclick="checkout()">CHECKOUT</button>
+  </div>
+</main>
+
+<script>
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  function renderCart() {
+    const container = document.getElementById("cart-items");
+    const totalElement = document.getElementById("cart-total");
+
+    if (cart.length === 0) {
+      container.innerHTML = '<div class="empty">Your cart is empty.</div>';
+      totalElement.textContent = "0 AMD";
+      return;
+    }
+
+    container.innerHTML = "";
+
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      if (!item.quantity) item.quantity = 1;
+
+      total += item.price * item.quantity;
+
+      const itemElement = document.createElement("div");
+      itemElement.className = "cart-item";
+
+      itemElement.innerHTML = `
+        <div class="
