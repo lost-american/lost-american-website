@@ -194,5 +194,64 @@
       const itemElement = document.createElement("div");
       itemElement.className = "cart-item";
 
-      itemElement.innerHTML = `
-        <div class="
+   itemElement.innerHTML = `
+  <div class="cart-image">PRODUCT IMAGE</div>
+
+  <div class="cart-info">
+    <h3>${item.name}</h3>
+
+    <div class="meta">
+      ${item.size ? "SIZE: " + item.size : ""}
+      ${item.color ? " · COLOR: " + item.color : ""}
+    </div>
+
+    <div class="price">${item.price.toLocaleString()} AMD</div>
+
+    <div class="quantity">
+      <button onclick="changeQuantity(${index}, -1)">−</button>
+      <span>${item.quantity}</span>
+      <button onclick="changeQuantity(${index}, 1)">+</button>
+    </div>
+  </div>
+
+  <button class="remove" onclick="removeItem(${index})">×</button>
+`;
+
+container.appendChild(itemElement);
+});
+
+totalElement.textContent = total.toLocaleString() + " AMD";
+saveCart();
+}
+
+function changeQuantity(index, amount) {
+  cart[index].quantity = (cart[index].quantity || 1) + amount;
+
+  if (cart[index].quantity <= 0) {
+    cart.splice(index, 1);
+  }
+
+  renderCart();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  saveCart();
+  renderCart();
+}
+
+function checkout() {
+  if (cart.length === 0) {
+    alert("Your cart is empty.");
+    return;
+  }
+
+  alert("Checkout will be connected next.");
+}
+
+renderCart();
+</script>
+
+</body>
+</html>
+        
