@@ -250,6 +250,7 @@
 
 <header>
   <div class="logo">LOST AMERICAN</div>
+  <button class="cart-btn" onclick="openCart()">🛒 <span id="cart-count">0</span></button>
 
   <button class="menu-btn" onclick="openMenu()">
     ☰
@@ -369,6 +370,15 @@
   function closeMenu() {
     document.getElementById("menu").classList.remove("open");
   }
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  function addToCart(name, price) {
+    cart.push({ name: name, price: price });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    document.getElementById("cart-count").textContent = cart.length;
+    alert(name + " added to cart!");
+  }
+  document.getElementById("cart-count").textContent = cart.length;
 </script>
 
 </body>
