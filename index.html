@@ -198,13 +198,22 @@
     }
 
     .product {
-      text-decoration: none;
-      color: white;
-      display: block;
-    }
+  text-decoration: none;
+  color: white;
+  display: block;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 18px;
+  padding: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
 
     .product-image {
       background: #181818;
+      border-radius: 14px;
+overflow: hidden;
+transition: transform 0.35s ease;
       aspect-ratio: 4 / 5;
       display: flex;
       align-items: center;
@@ -213,6 +222,14 @@
       font-size: 13px;
       margin-bottom: 13px;
     }
+    .product:hover {
+  transform: translateY(-6px);
+  border-color: #555;
+}
+
+.product:hover .product-image {
+  transform: scale(1.03);
+}
 
     .product h3 {
       font-size: 14px;
