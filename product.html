@@ -163,7 +163,7 @@
     <div class="color brown"></div>
   </div>
 
-  <button class="add-cart">ADD TO CART</button>
+  <button class="add-cart" onclick="addToCart()">ADD TO CART</button>
 
 </main>
 
@@ -175,6 +175,26 @@
 
     button.classList.add("active");
   }
+  function addToCart() {
+  let selectedSize = document.querySelector(".sizes button.active");
+
+  if (!selectedSize) {
+    alert("Please select a size.");
+    return;
+  }
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  cart.push({
+    name: "LOST T-SHIRT",
+    price: 15000,
+    size: selectedSize.textContent
+  });
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  alert("LOST T-SHIRT added to cart!");
+}
 </script>
 
 </body>
