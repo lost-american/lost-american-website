@@ -36,9 +36,52 @@
       font-size: 40px;
     }
 
-    .products {
-      padding: 20px;
-    }
+   .products {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+  .product-card {
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.product-photo {
+  aspect-ratio: 4 / 5;
+  background: #181818;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.product-card h3 {
+  font-size: 14px;
+  margin: 6px 0;
+}
+
+.product-card p {
+  color: #aaa;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.product-card button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: white;
+  color: black;
+  font-weight: 800;
+  cursor: pointer;
+}
   </style>
 </head>
 
@@ -54,7 +97,32 @@
 
   <section class="products">
     <h2>NEW DROP</h2>
+ <div class="product-card">
+  <div class="product-photo">PRODUCT IMAGE</div>
+  <h3>LOST T-SHIRT</h3>
+  <p>15 000 AMD</p>
+  <button>ADD TO CART</button>
+</div>
+    <div class="product-card">
+  <div class="product-photo">PRODUCT IMAGE</div>
+  <h3>AMERICAN HOODIE</h3>
+  <p>25 000 AMD</p>
+  <button>ADD TO CART</button>
+</div>
+    <div class="product-card">
+  <div class="product-photo">PRODUCT IMAGE</div>
+  <h3>OVERSIZED TEE</h3>
+  <p>18 000 AMD</p>
+  <button>ADD TO CART</button>
+</div>
+    <div class="product-card">
+  <div class="product-photo">PRODUCT IMAGE</div>
+  <h3>LOST HOODIE</h3>
+  <p>28 000 AMD</p>
+  <button>ADD TO CART</button>
+</div>
   </section>
+
 
 </body>
 </html>
