@@ -1,1 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WOMEN PRODUCT | Lost American</title>
 
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      padding: 22px;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .back {
+      display: inline-block;
+      margin: 22px;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .product-page {
+      padding: 20px;
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      background: #181818;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    .label {
+      margin: 18px 0 10px;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .sizes {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .sizes button {
+      background: transparent;
+      color: white;
+      border: 1px solid #444;
+      border-radius: 50%;
+      width: 46px;
+      height: 46px;
+      font-size: 14px;
+    }
+
+    .sizes button.active {
+      background: white;
+      color: black;
+    }
+
+    .add-cart {
+      width: 100%;
+      padding: 16px;
+      background: white;
+      color: black;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 800;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">LOST AMERICAN</div>
+</header>
+
+<a class="back" href="women.html">← BACK</a>
+
+<main class="product-page">
+
+  <div class="product-image">
+    PRODUCT IMAGE
+  </div>
+
+  <h1>WOMEN PRODUCT</h1>
+
+  <div class="price">0 AMD</div>
+
+  <div class="label">SELECT SIZE</div>
+
+  <div class="sizes">
+    <button onclick="selectSize(this)">XS</button>
+    <button onclick="selectSize(this)">S</button>
+    <button onclick="selectSize(this)">M</button>
+    <button onclick="selectSize(this)">L</button>
+  </div>
+
+  <button class="add-cart" onclick="addToCart()">ADD TO CART</button>
+
+</main>
+
+<script>
+  function selectSize(button) {
+    document.querySelectorAll(".sizes button").forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+  }
+
+  function addToCart() {
+    const selectedSize = document.querySelector(".sizes button.active");
+
+    if (!selectedSize) {
+      alert("Please select a size.");
+      return;
+    }
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+      name: "WOMEN PRODUCT",
+      price: 0,
+      size: selectedSize.textContent,
+      quantity: 1
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("WOMEN PRODUCT added to cart!");
+  }
+</script>
+
+</body>
+</html>
