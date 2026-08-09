@@ -382,6 +382,11 @@
     document.getElementById("cart-count").textContent = cart.length;
     alert(name + " added to cart!");
   }
+  function removeFromCart(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  document.getElementById("cart-count").textContent = cart.length;
+}
   document.getElementById("cart-count").textContent = cart.length;
   function openCart() {
   if (cart.length === 0) {
@@ -393,7 +398,21 @@
     (index + 1) + ". " + item.name + " — " + item.price + " AMD"
   ).join("\n");
 
-  alert("YOUR CART\n\n" + items);
+let choice = prompt(
+  "YOUR CART\n\n" + items +
+  "\n\nEnter item number to remove:"
+);
+
+if (choice === null || choice === "") return;
+
+let index = Number(choice) - 1;
+
+if (index >= 0 && index < cart.length) {
+  removeFromCart(index);
+  alert("Item removed from cart.");
+} else {
+  alert("Invalid item number.");
+}  
 }
 </script>
 
