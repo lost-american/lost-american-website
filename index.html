@@ -86,14 +86,55 @@
     }
 
     .hero {
-      min-height: 78vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 35px 22px;
       border-bottom: 1px solid #292929;
     }
+    .hero {
+  position: relative;
+  overflow: hidden;
+}
+.hero-hands {
+  position: absolute;
+  width: 100%;
+  max-width: 900px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1.15);
+  opacity: 0.95;
+  z-index: 1;
+  animation: handsMove 3s ease-in-out forwards;
+}
+    .hero-art {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
+    .hero-small,
+.hero h1,
+.hero p,
+.hero .btn {
+  position: relative;
+  z-index: 2;
+}
+    @keyframes handsMove {
+  0% {
+    transform: translate(-50%, -50%) scale(1.35);
+    opacity: 0;
+  }
 
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.95;
+  }
+}
     .hero-small {
       font-size: 13px;
       letter-spacing: 4px;
@@ -271,8 +312,11 @@
 </div>
 
 <section class="hero">
-
+<div class="hero-art">
+  <img src="IMG_8814.jpeg" alt="Hands" class="hero-hands">
+</div>
   <div class="hero-small">
+    
     LOST AMERICAN / 2026
   </div>
 
