@@ -96,7 +96,29 @@
       font-weight: 800;
       margin-top: 10px;
     }
+    .colors {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.color-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 3px solid #555;
+  cursor: pointer;
+}
+
+.color-black {
+  background: black;
+}
+
+.color-white {
+  background: white;
+}
   </style>
+  
 </head>
 
 <body>
@@ -128,7 +150,10 @@
   </div>
 
 <div class="label">SELECT COLOR</div>
-
+<div class="colors">
+  <button class="color-btn color-black"></button>
+  <button class="color-btn color-white"></button>
+</div>
   <button class="add-cart" onclick="addToCart()">ADD TO CART</button>
 
 </main>
