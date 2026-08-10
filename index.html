@@ -23,11 +23,11 @@
     }
 
     header {
-      height: 85px;
+      height: 110px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 22px;
+      padding: 0 32px;
       border-bottom: 1px solid #292929;
       position: sticky;
       top: 0;
@@ -47,6 +47,7 @@
       color: white;
       font-size: 31px;
       cursor: pointer;
+     transition: transform 0.25s ease, opacity 0.25s ease; 
     }
 
     .menu {
@@ -59,7 +60,7 @@
       color: #111;
       z-index: 999;
       padding: 28px 24px;
-      transition: 0.35s;
+      transition: right 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .menu.open {
@@ -84,6 +85,7 @@
       font-size: 28px;
       font-weight: 700;
       margin: 24px 0;
+      transition: transform 0.25s ease, opacity 0.25s ease;
     }
 
     .hero {
@@ -91,7 +93,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 35px 22px;
+      padding: 70px 32px;
       border-bottom: 1px solid #292929;
     }
     .hero {
@@ -144,7 +146,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(55px, 16vw, 105px);
+      font-size: clamp(70px, 19vw, 145px);
       line-height: 0.85;
       letter-spacing: -5px;
       font-weight: 900;
@@ -195,7 +197,7 @@
     .products {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 28px;
     }
 
     .product {
@@ -205,9 +207,13 @@
   background: #111;
   border: 1px solid #2a2a2a;
   border-radius: 18px;
-  padding: 12px;
+  padding: 24px;
   overflow: hidden;
   transition: transform 0.3s ease, border-color 0.3s ease;
+}
+    .product:hover {
+  transform: translateY(-6px);
+  border-color: #444;
 }
 
     .product-image {
@@ -250,8 +256,14 @@ transition: transform 0.35s ease;
       color: #111;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-    }
+    justify-content: flex-end;
+transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.banner:hover {
+  transform: translateY(-4px);
+}      
+    
+    
 
     .banner h2 {
       font-size: 50px;
@@ -266,7 +278,7 @@ transition: transform 0.35s ease;
     }
 
     footer {
-      padding: 60px 22px 35px;
+      padding: 80px 32px 45px;
       border-top: 1px solid #292929;
     }
 
@@ -279,7 +291,39 @@ transition: transform 0.35s ease;
       color: #777;
       font-size: 12px;
     }
+.story {
+  min-height: 85vh;
+  padding: 100px 32px;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid #292929;
+}
 
+.story h2 {
+  font-size: clamp(52px, 14vw, 110px);
+  line-height: 0.9;
+  letter-spacing: -4px;
+  margin-bottom: 35px;
+}
+
+.story p {
+  max-width: 520px;
+  color: #999;
+  font-size: 18px;
+  line-height: 1.7;
+}
+    .story {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.story.show {
+  opacity: 1;
+  transform: translateY(0);
+}
     @media (min-width: 800px) {
       header {
         padding: 0 60px;
@@ -434,7 +478,13 @@ transition: transform 0.35s ease;
   </p>
 
 </section>
-
+<section class="story">
+  <h2>THE STORY</h2>
+  <p>
+    Lost American is more than clothing.
+    It is movement, identity and a new generation.
+  </p>
+</section>
 <footer>
 
   <h2>LOST AMERICAN®️</h2>
@@ -447,6 +497,19 @@ transition: transform 0.35s ease;
 </footer>
 
 <script>
+  const story = document.querySelector(".story");
+
+const storyObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.2 });
+
+if (story) {
+  storyObserver.observe(story);
+}
   function openMenu() {
     document.getElementById("menu").classList.add("open");
   }
