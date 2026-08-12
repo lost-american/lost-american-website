@@ -334,7 +334,18 @@ transition: transform 0.4s ease, opacity 0.4s ease;
 .cart-btn #cart-count {
   color: #fff;
 }
-    </style>
+    .search-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+    </style> 
 </head>
 
 <body>
@@ -345,7 +356,7 @@ transition: transform 0.4s ease, opacity 0.4s ease;
   <path d="M6.5 8.5H17.5L18.5 20H5.5L6.5 8.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
   <path d="M9 8.5V7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7V8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
 </svg> <span id="cart-count">0</span></button>
-
+<button class="search-btn" onclick="openSearch()" aria-label="Search"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
   <button class="menu-btn" onclick="openMenu()">
     ☰
   </button>
