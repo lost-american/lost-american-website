@@ -518,6 +518,7 @@ transition: transform 0.4s ease, opacity 0.4s ease;
       </div>
       <h3>LOST T-SHIRT</h3>
       <div class="price">15 000 AMD</div>
+  <button class="product-wishlist" onclick="addToWishlist('LOST T-SHIRT', 15000)">♡ ADD TO FAVORITES</button>
   <button onclick="addToCart('LOST T-SHIRT', 15000)">ADD TO CART</button>
     </div>
 
@@ -602,6 +603,51 @@ function openWishlist() {
 function closeWishlist() {
   document.getElementById("wishlistPanel").classList.remove("open");
 }
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+function addToWishlist(name, price) {
+  const exists = wishlist.some(item => item.name === name);
+
+  if (!exists) {
+    wishlist.push({ name: name, price: price });
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }
+
+  renderWishlist();
+}
+
+function removeFromWishlist(index) {
+  wishlist.splice(index, 1);
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  renderWishlist();
+}
+
+function renderWishlist() {
+  const container = document.getElementById("wishlistItems");
+
+  if (wishlist.length === 0) {
+    container.innerHTML =
+      '<p class="wishlist-empty">YOUR FAVORITES ARE EMPTY</p>';
+    return;
+  }
+
+  container.innerHTML = wishlist.map((item, index) => `
+    <div class="wishlist-item">
+      <h3>${item.name}</h3>
+      <p>${item.price.toLocaleString()} AMD</p>
+
+      <button onclick="addToCart('${item.name}', ${item.price})">
+        ADD TO CART
+      </button>
+
+      <button onclick="removeFromWishlist(${index})">
+        REMOVE
+      </button>
+    </div>
+  `).join("");
+}
+
+renderWishlist();
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   function addToCart(name, price) {
