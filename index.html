@@ -347,6 +347,42 @@ transition: transform 0.4s ease, opacity 0.4s ease;
   align-items: center;
   justify-content: center;
 }
+   .search-panel {
+  position: fixed;
+  top: 110px;
+  left: 0;
+  width: 100%;
+  background: #0b0b0b;
+  padding: 20px 32px;
+  display: none;
+  align-items: center;
+  gap: 15px;
+  z-index: 200;
+  border-bottom: 1px solid #292929;
+}
+
+.search-panel.active {
+  display: flex;
+}
+
+.search-panel input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  font-size: 18px;
+  padding: 12px 0;
+  outline: none;
+}
+
+.search-panel button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 32px;
+  cursor: pointer;
+} 
     </style> 
 </head>
 
@@ -363,7 +399,10 @@ transition: transform 0.4s ease, opacity 0.4s ease;
     ☰
   </button>
 </header>
-
+<div class="search-panel" id="searchPanel">
+  <input type="text" id="searchInput" placeholder="SEARCH LOST AMERICAN">
+  <button onclick="closeSearch()">×</button>
+</div>
 <div class="menu" id="menu">
 
   <button class="close-btn" onclick="closeMenu()">
@@ -480,6 +519,14 @@ transition: transform 0.4s ease, opacity 0.4s ease;
   function closeMenu() {
     document.getElementById("menu").classList.remove("open");
   }
+  function openSearch() {
+  document.getElementById("searchPanel").classList.add("active");
+  document.getElementById("searchInput").focus();
+}
+
+function closeSearch() {
+  document.getElementById("searchPanel").classList.remove("active");
+}
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   function addToCart(name, price) {
