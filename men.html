@@ -101,28 +101,46 @@
   <div class="product-photo">PRODUCT IMAGE</div>
   <h3>LOST T-SHIRT</h3>
   <p>15 000 AMD</p>
+   <button class="product-wishlist" onclick="event.stopPropagation(); addToWishlist('LOST T-SHIRT', 15000)">♡ ADD TO FAVORITES</button>
   <button>ADD TO CART</button>
 </div>
    <div class="product-card" onclick="window.location.href='product.html'"> 
   <div class="product-photo">PRODUCT IMAGE</div>
   <h3>AMERICAN HOODIE</h3>
   <p>25 000 AMD</p>
+     <button class="product-wishlist" onclick="event.stopPropagation(); addToWishlist('AMERICAN HOODIE', 25000)">♡ ADD TO FAVORITES</button>
   <button>ADD TO CART</button>
 </div>
    <div class="product-card" onclick="window.location.href='product.html'"> 
   <div class="product-photo">PRODUCT IMAGE</div>
   <h3>OVERSIZED TEE</h3>
   <p>18 000 AMD</p>
+     <button class="product-wishlist" onclick="event.stopPropagation(); addToWishlist('OVERSIZED TEE', 18000)">♡ ADD TO FAVORITES</button>
   <button>ADD TO CART</button>
 </div>
     <div class="product-card" onclick="window.location.href='product.html'">
   <div class="product-photo">PRODUCT IMAGE</div>
   <h3>LOST HOODIE</h3>
   <p>28 000 AMD</p>
+      <button class="product-wishlist" onclick="event.stopPropagation(); addToWishlist('LOST HOODIE', 28000)">♡ ADD TO FAVORITES</button>
   <button>ADD TO CART</button>
 </div>
   </section>
 
+<script>
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
+function addToWishlist(name, price) {
+  const exists = wishlist.some(item => item.name === name);
+
+  if (!exists) {
+    wishlist.push({ name: name, price: price });
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    alert(name + " added to favorites!");
+  } else {
+    alert(name + " is already in favorites!");
+  }
+}
+</script>
 </body>
 </html>
