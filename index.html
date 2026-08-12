@@ -383,6 +383,58 @@ transition: transform 0.4s ease, opacity 0.4s ease;
   font-size: 32px;
   cursor: pointer;
 } 
+    .wishlist-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 31px;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+    .wishlist-panel {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: min(420px, 92%);
+  height: 100vh;
+  background: #111;
+  color: #fff;
+  z-index: 1000;
+  padding: 28px 24px;
+  transition: right 0.4s ease;
+  overflow-y: auto;
+}
+
+.wishlist-panel.open {
+  right: 0;
+}
+
+.wishlist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.wishlist-header h2 {
+  font-size: 26px;
+}
+
+.wishlist-header button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 34px;
+  cursor: pointer;
+}
+
+.wishlist-empty {
+  color: #777;
+  font-size: 14px;
+}
     </style> 
 </head>
 
@@ -390,6 +442,7 @@ transition: transform 0.4s ease, opacity 0.4s ease;
 
 <header>
   <div class="logo">LOST AMERICAN</div>
+  <button class="wishlist-btn" onclick="openWishlist()" aria-label="Favorites">♡</button>
  <button class="cart-btn" onclick="window.location.href='cart.html'"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
   <path d="M6.5 8.5H17.5L18.5 20H5.5L6.5 8.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
   <path d="M9 8.5V7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7V8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
@@ -403,8 +456,22 @@ transition: transform 0.4s ease, opacity 0.4s ease;
   <input type="text" id="searchInput" placeholder="SEARCH LOST AMERICAN">
   <button onclick="closeSearch()">×</button>
 </div>
-<div class="menu" id="menu">
 
+<div class="wishlist-panel" id="wishlistPanel">
+  <div class="wishlist-header">
+  <h2>FAVORITES</h2>
+  <button onclick="closeWishlist()">×</button>
+</div>
+
+<div id="wishlistItems">
+  <p class="wishlist-empty">YOUR FAVORITES ARE EMPTY</p>
+</div>
+</div>
+
+<div class="menu" id="menu">
+  
+    
+  
   <button class="close-btn" onclick="closeMenu()">
     ×
   </button>
@@ -526,6 +593,14 @@ transition: transform 0.4s ease, opacity 0.4s ease;
 
 function closeSearch() {
   document.getElementById("searchPanel").classList.remove("active");
+}
+
+function openWishlist() {
+  document.getElementById("wishlistPanel").classList.add("open");
+}
+
+function closeWishlist() {
+  document.getElementById("wishlistPanel").classList.remove("open");
 }
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
